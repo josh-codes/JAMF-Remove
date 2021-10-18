@@ -19,6 +19,12 @@ echo "Cleared blacklist ☑️"
 # Remove Hooks
 sudo rm -rf /Library/Application\ Support/JAMF/ManagementFrameworkScripts\
 echo "Removed hooks ☑️"
+echo "Stoping daemonds"
+sudo launchctl unload /Library/LaunchAgents/com.jamf.management.agent.plist || echo "[ERROR] Daemond nor running"
+sudo launchctl unload /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist || echo "[ERROR] Daemond nor running"
+sudo launchctl unload /Library/LaunchDaemons/com.jamf.management.daemon.plist || echo "[ERROR] Daemond nor running"
+sudo launchctl unload /Library/LaunchDaemons/com.jamfsoftware.task.1.plist || echo "[ERROR] Daemond nor running"
+echo "Stopped daemonds ☑️"
 # Remove Launch Agents
 sudo rm /Library/LaunchAgents/com.jamf.management.agent.plist
 sudo rm /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist
