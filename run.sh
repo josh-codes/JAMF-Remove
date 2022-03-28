@@ -20,18 +20,20 @@ echo "Cleared blacklist ☑️"
 sudo rm -rf /Library/Application\ Support/JAMF/ManagementFrameworkScripts\
 echo "Removed hooks ☑️"
 echo "Stoping daemonds"
-sudo launchctl unload /Library/LaunchAgents/com.jamf.management.agent.plist || echo "[ERROR] Daemond nor running"
-sudo launchctl unload /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist || echo "[ERROR] Daemond nor running"
-sudo launchctl unload /Library/LaunchDaemons/com.jamf.management.daemon.plist || echo "[ERROR] Daemond nor running"
-sudo launchctl unload /Library/LaunchDaemons/com.jamfsoftware.task.1.plist || echo "[ERROR] Daemond nor running"
+sudo launchctl unload /Library/LaunchAgents/com.jamf.management.agent.plist || echo "[ERROR] Daemond not running"
+sudo launchctl unload /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist || echo "[ERROR] Daemond not running"
+sudo launchctl unload /Library/LaunchDaemons/com.jamf.management.daemon.plist || echo "[ERROR] Daemond not running"
+sudo launchctl unload /Library/LaunchDaemons/com.jamfsoftware.task.1.plist || echo "[ERROR] Daemond not running"
+sudo launchctl unload /Library/LaunchDaemons/com.jamfsoftware.startupItem.plist || echo "[ERROR] Daemond not running"
 echo "Stopped daemonds ☑️"
 # Remove Launch Agents
-sudo rm /Library/LaunchAgents/com.jamf.management.agent.plist
-sudo rm /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist
+sudo rm /Library/LaunchAgents/com.jamf.management.agent.plist || echo ""
+sudo rm /Library/LaunchAgents/com.jamfsoftware.jamf.agent.plist || echo ""
 echo "Removed launch agents ☑️"
 # Remove Launch Daemons
-sudo rm /Library/LaunchDaemons/com.jamf.management.daemon.plist
-sudo rm /Library/LaunchDaemons/com.jamfsoftware.task.1.plist
+sudo rm /Library/LaunchDaemons/com.jamf.management.daemon.plist || echo ""
+sudo rm /Library/LaunchDaemons/com.jamfsoftware.task.1.plist || echo ""
+sudo rm /Library/LaunchDaemons/com.jamfsoftware.startupItem.plist || echo ""
 echo "Removed launch daemons ☑️"
 # Reboot
 echo "Rebooting in 3, press control+c to cancel"
